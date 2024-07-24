@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #ship-name {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0073e6;
+  }
+  
+  .main-details {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .main-detail {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .icon-btn {
+    position: absolute;
+    top: 20px;
+    background-color: #0073e6;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+  
+  .icon-btn#back-btn {
+    left: 20px;
+  }
+  
+  .icon-btn#back-btn:hover,
+  .icon-btn#edit-btn:hover,
+  .icon-btn#delete-btn:hover,
+  .icon-btn#result-btn:hover {
+    background-color: #005bb5;
+  }
+  
+  .icon-btn#edit-btn {
+    right: 70px;
+  }
+  
+  .icon-btn#delete-btn {
+    right: 20px;
+  }
+  
+  .icon-btn#result-btn {
+    right: 120px;
+  }
+  
+  .loading {
+    display: none;
+  }
+  
+  .ship-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #e6f7ff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detail-tile {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detail-title {
+    font-weight: bold;
+    color: #005bb5;
+    margin-bottom: 5px;
+  }
+  

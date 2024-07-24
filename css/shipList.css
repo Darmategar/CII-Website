@@ -1,0 +1,85 @@
+/* shipList.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  color: #0073e6;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.icon-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.icon-btn:hover {
+  background-color: #218838;
+}
+
+.icon-btn i {
+  margin: 0;
+}
+
+.ship-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ship-item {
+  background-color: #e6f7ff;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ship-item:hover {
+  background-color: #d0efff;
+}
+
+.ship-item strong {
+  color: #005bb5;
+}
+
+.ship-item i {
+  color: #005bb5;
+  margin-right: 5px;
+}

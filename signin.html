@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="css/signin.css">
+  <link rel="icon" href="assets/header.png" type="image/png">
+
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img src="assets/dmom.jpg" alt="Website Logo" class="logo"> 
+      <nav>
+        <ul>
+          <li><a href="calculate.html">calculate</a></li>
+          <li><a href="signin.html">Login</a></li>
+          <li><a href="signup.html">Sign up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <section id="signin">
+      <div class="container">
+        <h1>Sign In</h1>
+        <form id="signin-form">
+          <div class="form-group">
+            <label for="email">email:</label>
+            <input type="text" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button class="btn" id="signin-button">Sign In</button>
+        </form>
+        <p class="signup-text">Don't have an account? <a href="signup.html">Sign up</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="/scripts/signin.js"></script>
+  <script type="module" src="/scripts/firebase.js"></script>
+</body>
+</html>

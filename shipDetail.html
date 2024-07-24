@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ship Details</title>
+  <link rel="stylesheet" href="css/shipDetail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <button id="back-btn" class="icon-btn"><i class="fas fa-arrow-left"></i></button>
+    <button id="edit-btn" class="icon-btn"><i class="fas fa-edit"></i></button>
+    <button id="delete-btn" class="icon-btn"><i class="fas fa-trash"></i></button>
+    <button id="result-btn" class="icon-btn"><i class="fa-solid fa-calculator"></i></button>
+    <div class="title-container">
+      <h1>Ship Details</h1>
+      <h2 id="ship-name"></h2>
+    </div>
+    <div id="loading" class="loading"></div>
+    <div id="main-details" class="main-details">
+      <div id="vessel-type" class="main-detail"></div>
+      <div id="route" class="main-detail"></div>
+      <div id="fuel-type" class="main-detail"></div>
+    </div>
+    <div id="ship-details" class="ship-details">
+      <!-- Ship details will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    document.getElementById('back-btn').addEventListener('click', function() {
+        window.location.href = 'shipList.html'; // Navigate to shipList.html
+    });
+  </script>
+  <script src="scripts/shipDetail.js" type="module"></script>
+</body>
+</html>

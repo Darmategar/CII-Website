@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/signup.css">
+  <link rel="icon" href="assets/header.png" type="image/png">
+
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img src="assets/dmom.jpg" alt="Website Logo" class="logo"> 
+      <nav>
+        <ul>
+          <li><a href="calculate.html">calculate</a></li>
+          <li><a href="signin.html">Login</a></li>
+          <li><a href="signin.html">Sign in</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <section id="signup">
+      <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button class="btn" id="signup-button">Sign Up</button>
+        </form>
+        <p class="signin-text">Already have an account? <a href="signin.html">Sign in</a></p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/scripts/signup.js"></script>
+</body>
+</html>
