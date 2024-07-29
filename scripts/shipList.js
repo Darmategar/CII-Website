@@ -45,6 +45,8 @@ function createShipListItem(id, shipData) {
     listItem.innerHTML = `
       <strong>${shipData.Name}</strong> - ${vesselTypeLabel}
       <br>
+      <strong>IMO number</strong> : ${shipData.IMO}
+      <br>
       <i class="fas fa-route"></i> ${mapRoute(shipData.route)}
       <br>
       <i class="fas fa-gas-pump"></i> ${mapFuelType(shipData.foc_type)}

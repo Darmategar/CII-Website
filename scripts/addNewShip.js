@@ -61,7 +61,6 @@ window.getForm = function(event) {
 
   const auxpower = parseFloat(machineryData.querySelector('input[name="aux-power"]').value);
   const auxnumber = parseFloat(machineryData.querySelector('input[name="aux-number"]').value);
-  const auxfoc = parseFloat(machineryData.querySelector('input[name="aux-foc"]').value);
 
   const route = parseInt(routeData.querySelector('select[name="route"]').value);
 
@@ -89,12 +88,10 @@ window.getForm = function(event) {
     rpm,
     auxpower,
     auxnumber,
-    auxfoc,
-    route,
-    initialSpeed
+    route
   };
 
-  localStorage.setItem('initial_speed', initialSpeed);
+
 
   const dataToSave = {
     ...shipDataObj

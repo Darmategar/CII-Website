@@ -46,7 +46,7 @@ function fillForm(shipData) {
     document.getElementById('T').value = shipData.T;
     document.getElementById('H').value = shipData.H;
     document.getElementById('DWT').value = shipData.DWT;
-    document.getElementById('Vs').value = shipData.Vs;
+    document.getElementById('Vs').value = shipData.VS;
     document.getElementById('Dprop').value = shipData.Dprop;
     document.getElementById('Nrudder').value = shipData.Nrudder;
     document.getElementById('Nthruster').value = shipData.Nthruster;
@@ -57,9 +57,8 @@ function fillForm(shipData) {
     document.getElementById('SFOC').value = shipData.sfoc;
     document.getElementById('RPM').value = shipData.rpm;
     document.getElementById('fuel-type').value = shipData.foc_type;
-    document.getElementById('aux-power').value = shipData.aux_power;
-    document.getElementById('aux-number').value = shipData.aux_number;
-    document.getElementById('aux-foc').value = shipData.auxfoc;
+    document.getElementById('aux-power').value = shipData.auxpower;
+    document.getElementById('aux-number').value = shipData.auxnumber;
 
     document.getElementById('route').value = shipData.route;
 }
@@ -85,7 +84,7 @@ document.getElementById('submit-form').addEventListener('click', async function(
         T: parseFloat(shipDataForm.querySelector('input[name="T"]').value),
         H: parseFloat(shipDataForm.querySelector('input[name="H"]').value),
         DWT: parseFloat(shipDataForm.querySelector('input[name="DWT"]').value),
-        initialSpeed: parseFloat(shipDataForm.querySelector('input[name="Vs"]').value),
+        VS: parseFloat(shipDataForm.querySelector('input[name="Vs"]').value),
         Dprop: parseFloat(shipDataForm.querySelector('input[name="Dprop"]').value),
         Nrudder: parseFloat(shipDataForm.querySelector('input[name="Nrudder"]').value),
         Nthruster: parseFloat(shipDataForm.querySelector('input[name="Nthruster"]').value),
@@ -96,9 +95,8 @@ document.getElementById('submit-form').addEventListener('click', async function(
         pme: parseFloat(machineryDataForm.querySelector('input[name="Pme"]').value),
         sfoc: parseFloat(machineryDataForm.querySelector('input[name="SFOC"]').value),
         rpm: parseFloat(machineryDataForm.querySelector('input[name="RPM"]').value),
-        aux_power: parseFloat(machineryDataForm.querySelector('input[name="aux-power"]').value),
-        aux_number: parseFloat(machineryDataForm.querySelector('input[name="aux-number"]').value),
-        auxfoc: parseFloat(machineryDataForm.querySelector('input[name="aux-foc"]').value),
+        auxpower: parseFloat(machineryDataForm.querySelector('input[name="aux-power"]').value),
+        auxnumber: parseFloat(machineryDataForm.querySelector('input[name="aux-number"]').value),
 
         route: parseInt(routeDataForm.querySelector('select[name="route"]').value),
     };

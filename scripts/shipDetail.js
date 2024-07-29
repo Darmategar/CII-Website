@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 function displayShipDetails(shipData, shipId) {
     const shipDetailsElement = document.getElementById('ship-details');
     const shipNameElement = document.getElementById('ship-name');
+    const imonumElement = document.getElementById('IMO-number');
 
     shipNameElement.textContent = shipData.Name;
+    imonumElement.textContent = shipData.IMO;
 
     
     // Set the main details
@@ -52,7 +54,6 @@ function displayShipDetails(shipData, shipId) {
     document.getElementById('fuel-type').textContent = `Fuel Type: ${mapFuelType(shipData.foc_type)}`;
 
     const details = [
-        { title: 'IMO', value: `${shipData.IMO}` },
         { title: 'Length Overall (LOA)', value: `${shipData.LOA} meters` },
         { title: 'Length Between Perpendiculars (LPP)', value: `${shipData.LPP} meters` },
         { title: 'Length on Waterline (LWL)', value: `${shipData.LWL} meters` },
@@ -61,7 +62,7 @@ function displayShipDetails(shipData, shipId) {
         { title: 'Draft (T)', value: `${shipData.T} meters` },
         { title: 'Height (H)', value: `${shipData.H} meters` },
         { title: 'Deadweight Tonnage (DWT)', value: `${shipData.DWT} tons` },
-        { title: 'Speed (VS)', value: `${shipData.initialSpeed} knots` },
+        { title: 'Speed (VS)', value: `${shipData.VS} knots` },
         { title: 'Propeller Diameter (Dprop)', value: `${shipData.Dprop} meters` },
         { title: 'Number of Rudders', value: `${shipData.Nrudder}` },
         { title: 'Number of Thrusters', value: `${shipData.Nthruster}` },
@@ -72,7 +73,7 @@ function displayShipDetails(shipData, shipId) {
         { title: 'Revolutions Per Minute (RPM)', value: `${shipData.rpm} RPM` },
         { title: 'Number of Auxiliary Engines', value: `${shipData.auxnumber}` },
         { title: 'Auxiliary Engine Power', value: `${shipData.auxpower} kW` },
-        { title: 'Auxiliary Fuel Consumption', value: `${shipData.auxfoc} g/kWh` },
+        { title: 'Auxiliary Fuel Consumption', value: `220 g/kWh` },
     ];
     
 

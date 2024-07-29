@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async function() {
               const rpm = shipData.rpm;
               const auxpower = shipData.auxpower;
               const auxnumber = shipData.auxnumber;
-              const auxfoc = shipData.auxfoc;
               const route = shipData.route;
 
               // Console logs for all variables
@@ -73,10 +72,9 @@ document.addEventListener('DOMContentLoaded', async function() {
               console.log('rpm:', rpm);
               console.log('auxpower:', auxpower);
               console.log('auxnumber:', auxnumber);
-              console.log('auxfoc:', auxfoc);
               console.log('route:', route);
 
-              calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop, Nrudder, Nthruster, TA, TF, foc_type, pme, sfoc, rpm, auxfoc, route,Vs);
+              calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop, Nrudder, Nthruster, TA, TF, foc_type, pme, sfoc, rpm, auxnumber, auxpower, route,Vs);
               populateTables(Vs,Name)
           } else {
               console.log("No such document");
@@ -455,6 +453,7 @@ function EL_cal(totalpower,pme){
   return totalpower / (pme * NE)
 }
 
+
 function SFOCrel_cal(EL){
   return 0.455 * (EL ** 2) - 0.71 * EL + 1.28
 }
@@ -612,16 +611,16 @@ function route_def(route) {
   return { docking, days, avail, distance, sailingTime, Time1, Time2, Time3, manuver1, manuver2, manuver3, totalsail, maxvoyage };
 }
 
-function ae_sail_cal(auxfoc,el_sail,sailing,manuver1,manuver2,manuver3){
+function ae_sail_cal(auxpower,sailing,manuver1,manuver2,manuver3){
  const total = sailing + manuver1 + manuver2 + manuver3
  
- return auxfoc * 0.7 * total
+ return auxpower * 220 / 1123.596 * 0.7 * total
 }
 
-function ae_port_cal(auxfoc,el_port,time1,time2,time3){
+function ae_port_cal(auxpower,auxnumber,el_port,time1,time2,time3){
   var total = time1 + time2 + time3
 
-  return auxfoc * el_port * total
+  return auxpower * auxnumber * 220 / 1123.596 * el_port * total
 }
 
 function totalsail_cal(time1,time2,time3,manuver1,manuver2,manuver3,saildistance,Vs){
@@ -771,7 +770,7 @@ function cii_grade_cal(currentCii, inferiorCii, upperCii, lowerCii, superiorCii)
   }
 }
 
-function calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop, Nrudder, Nthruster, TA, TF, foc_type, pme, sfoc, rpm, auxfoc, route,Vs) {
+function calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop, Nrudder, Nthruster, TA, TF, foc_type, pme, sfoc, rpm, auxnumber, auxpower, route,Vs) {
   let initialSpeed = Vs;
   const startYear = 2024; // Starting year
   const endYear = 2030; // Ending year
@@ -781,7 +780,7 @@ function calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop,
   for (let year = startYear; year <= endYear; year++) {
     let Vs = initialSpeed;
     for (let i = 0; i < 8; i++) {
-      const result = FinaHFO_cal(Name, VesselType, DWT, LOA, LPP, LWL, LoS, B, T, H, Vs, Dprop, Nrudder, Nthruster, TA, TF, pme, sfoc, rpm, auxfoc, route, foc_type, year);
+      const result = FinaHFO_cal(Name, VesselType, DWT, LOA, LPP, LWL, LoS, B, T, H, Vs, Dprop, Nrudder, Nthruster, TA, TF, pme, sfoc, rpm, auxnumber, auxpower, route, foc_type, year);
 
       // Store each iteration's results in local storage with a unique key
       const prefix = `result_${year}_${i}_`;
@@ -803,7 +802,7 @@ function calculateCII(Name, VesselType, LOA, LPP, LWL, LoS, B, T, H, DWT, Dprop,
   window.open('results.html', '_blank');
 }
 
-function FinaHFO_cal(name, vesselType, DWT, LOA, LPP, LWL, LoS, B, T, H, Vs, Dprop, Nrudder, Nthruster, TA, TF, pme, sfoc, rpm,auxfoc,route, foc_type, year) {
+function FinaHFO_cal(name, vesselType, DWT, LOA, LPP, LWL, LoS, B, T, H, Vs, Dprop, Nrudder, Nthruster, TA, TF, pme, sfoc, rpm,auxnumber, auxpower,route, foc_type, year) {
   const reynold_number = reynoldnumber(Vs, LWL);
   const cf_number = coefficientfriction(reynold_number);
   const froude_number = froudenumber(Vs, LWL);
@@ -846,8 +845,8 @@ function FinaHFO_cal(name, vesselType, DWT, LOA, LPP, LWL, LoS, B, T, H, Vs, Dpr
 
   const SailTime_AE = distance / Vs;
 
-  const aesail = ae_sail_cal(auxfoc, elsail, SailTime_AE, manuver1, manuver2, manuver3);
-  const aeport = ae_port_cal(auxfoc, elport, Time1, Time2, Time3);
+  const aesail = ae_sail_cal(auxpower, elsail, SailTime_AE, manuver1, manuver2, manuver3);
+  const aeport = ae_port_cal(auxnumber, auxpower, elport, Time1, Time2, Time3);
 
   const max_voyage = Math.ceil((avail * 24)/sailtime);
   const total_distance = max_voyage * distance;
@@ -976,6 +975,7 @@ function populateTables(Vs, Name) {
   shipNameElement.textContent = Name;
 
   const speeds = [];
+  const EL = [];
   const focMe = [];
   const focMePlus10 = [];
   const focAe = [];
@@ -986,6 +986,7 @@ function populateTables(Vs, Name) {
     speeds.push(speed);
 
     // Retrieve data from localStorage
+    const EL = parseFloat(localStorage.getItem(`result_${startYear}_${i}_el`)).toFixed(3);
     const lowerMarginMe = parseFloat(localStorage.getItem(`result_${startYear}_${i}_margin_dn_me`)).toFixed(3);
     const upperMarginMe = parseFloat(localStorage.getItem(`result_${startYear}_${i}_margin_up_me`)).toFixed(3);
     const lowerMarginAe = parseFloat(localStorage.getItem(`result_${startYear}_${i}_margin_dn_ae`)).toFixed(3);
@@ -1001,6 +1002,7 @@ function populateTables(Vs, Name) {
     const fuelRow = document.createElement('tr');
     fuelRow.innerHTML = `
       <td>${speed}</td>
+      <td>${EL}</td>
       <td>${lowerMarginMe}</td>
       <td>${upperMarginMe}</td>
       <td>${lowerMarginAe}</td>
